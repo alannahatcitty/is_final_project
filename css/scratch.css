@@ -1,5 +1,39 @@
 /* From-scratch stylesheet for scratch.html — not used on Bootstrap pages */
 
+/* Full-site nav (custom HTML only — no Bootstrap on this page) */
+.site-nav {
+  background: #0a3d32;
+  border-bottom: 2px solid #5ecf9a;
+  padding: 0.65rem 1.25rem;
+  margin-bottom: 0;
+}
+
+.site-nav-inner {
+  max-width: 52rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1rem;
+}
+
+.site-nav-inner a {
+  color: #d4ebe4;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.2rem 0;
+}
+
+.site-nav-inner a:hover {
+  color: #fff;
+}
+
+.site-nav-inner a.current {
+  color: #fff;
+  border-bottom: 2px solid #c9a227;
+}
+
 body {
   margin: 0;
   font-family: "Nunito Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
