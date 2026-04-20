@@ -1,13 +1,10 @@
-/**
- * Single source of truth for Bootstrap pages (index, resume) primary nav.
- * Ensures all four links always appear; active state from body[data-nav-active].
- */
+/* Shared nav for index + resume. Active link: body[data-nav-active] */
 (function () {
   var active = (document.body && document.body.getAttribute("data-nav-active")) || "home";
   var items = [
     { id: "home", href: "index.html", label: "Home" },
     { id: "resume", href: "resume.html", label: "Résumé" },
-    { id: "scratch", href: "scratch.html", label: "Scratch page" },
+    { id: "scratch", href: "scratch.html", label: "Scratch" },
     { id: "app", href: "app.html", label: "Mini-game" },
   ];
 

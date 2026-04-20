@@ -53,8 +53,6 @@ a:hover {
   color: #094233;
 }
 
-/* At least three divs styled for layout: .shell, .panel, .tableau-frame (see HTML) */
-
 .shell {
   max-width: 52rem;
   margin-left: auto;

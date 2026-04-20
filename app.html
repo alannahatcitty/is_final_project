@@ -171,13 +171,12 @@
     <nav class="site-nav" aria-label="Site pages">
       <a href="index.html">Home</a>
       <a href="resume.html">Résumé</a>
-      <a href="scratch.html">Scratch page</a>
+      <a href="scratch.html">Scratch</a>
       <a href="app.html" class="current" aria-current="page">Mini-game</a>
     </nav>
     <h1>Dumbbell Guess Challenge</h1>
     <p class="sub">
-      The “gym” picked a secret weight from <strong>1</strong> to <strong>100</strong> (lbs). You get
-      <strong>seven</strong> tries. Warmer/colder hints keep it fair.
+      Pick a number <strong>1–100</strong>. Seven tries. Hints: hotter / colder toward the target.
     </p>
 
     <div class="game" role="application" aria-labelledby="game-title">
@@ -189,14 +188,14 @@
       <label for="guess">Your guess</label>
       <input id="guess" type="number" min="1" max="100" step="1" placeholder="e.g. 42" autocomplete="off" />
       <div class="btn-row">
-        <button type="button" class="btn-primary" id="submit">Lock it in</button>
-        <button type="button" class="btn-secondary" id="newgame">New weight</button>
+        <button type="button" class="btn-primary" id="submit">Guess</button>
+        <button type="button" class="btn-secondary" id="newgame">New round</button>
       </div>
-      <div id="feedback" class="msg hint" aria-live="polite">Press “New weight” or start typing a number.</div>
+      <div id="feedback" class="msg hint" aria-live="polite">Pick a number or hit New round.</div>
     </div>
 
     <p class="footer">
-      <a href="scratch.html">Scratch page</a> ·
+      <a href="scratch.html">Scratch</a> ·
       <a href="index.html">Home</a>
     </p>
 
@@ -226,7 +225,7 @@
           left = 7;
           elLeft.textContent = String(left);
           elGuess.value = "";
-          setFeedback("New round: guess between 1 and 100.", "hint");
+          setFeedback("1–100. Go.", "hint");
           elGuess.focus();
         }
 
@@ -237,7 +236,7 @@
             return;
           }
           if (left <= 0) {
-            setFeedback('No guesses left—hit “New weight.”', "hint");
+            setFeedback("No guesses left. New round.", "hint");
             return;
           }
 
@@ -248,7 +247,7 @@
             streak += 1;
             best = Math.max(best, streak);
             elStreak.textContent = String(best);
-            setFeedback("Nailed it — " + secret + " lbs! Streak is " + streak + ". Try a heavier mystery?", "win");
+            setFeedback("Got it: " + secret + ". Streak: " + streak + ".", "win");
             secret = rnd();
             left = 7;
             elLeft.textContent = String(left);
@@ -258,7 +257,7 @@
           if (left === 0) {
             streak = 0;
             elStreak.textContent = String(best);
-            setFeedback("Out of tries. The weight was " + secret + " lbs. New weight is ready when you are.", "hint");
+            setFeedback("Out of tries. Answer was " + secret + ".", "hint");
             secret = rnd();
             left = 7;
             elLeft.textContent = String(left);
@@ -268,7 +267,7 @@
           var diff = Math.abs(n - secret);
           var dir = n < secret ? "heavier" : "lighter";
           var heat = diff > 25 ? "ice-cold" : diff > 12 ? "cool" : diff > 5 ? "warming up" : "very hot";
-          setFeedback(heat + " — go " + dir + ". (" + left + " guess" + (left === 1 ? "" : "es") + " left)", "hint");
+          setFeedback(heat + ", go " + dir + " (" + left + " left)", "hint");
         }
 
         document.getElementById("submit").addEventListener("click", submit);
