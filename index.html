@@ -20,35 +20,30 @@
     />
     <link href="css/professional.css" rel="stylesheet" />
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <body data-nav-active="home">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Primary">
       <div class="container">
         <a class="navbar-brand" href="index.html">Alannah Atcitty</a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarMain"
-          aria-controls="navbarMain"
+          data-bs-target="#navbarCollapseMain"
+          aria-controls="navbarCollapseMain"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarMain">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <div class="collapse navbar-collapse" id="navbarCollapseMain">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 flex-wrap" id="site-navbar-list">
+            <!-- Populated by js/site-navbar.js; fallback below works if JS is off -->
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link active" href="index.html" aria-current="page">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="resume.html">Résumé</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="scratch.html">Scratch page</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="app.html">Mini-game</a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="resume.html">Résumé</a></li>
+            <li class="nav-item"><a class="nav-link" href="scratch.html">Scratch page</a></li>
+            <li class="nav-item"><a class="nav-link" href="app.html">Mini-game</a></li>
           </ul>
         </div>
       </div>
@@ -167,6 +162,7 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="js/site-navbar.js" defer></script>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>

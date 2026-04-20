@@ -28,6 +28,11 @@ h6 {
   letter-spacing: -0.03em;
 }
 
+/* Keep all primary nav links visible and tappable (wrap on narrow widths) */
+.navbar .navbar-nav {
+  row-gap: 0.25rem;
+}
+
 .btn-primary {
   background-color: var(--brand-primary);
   border-color: var(--brand-primary);
