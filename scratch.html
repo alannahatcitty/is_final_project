@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Movement &amp; Momentum — Scratch Page</title>
+    <meta
+      name="description"
+      content="A from-scratch HTML page about building sustainable fitness habits — for a class project."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/scratch.css" />
+  </head>
+  <body>
+    <div id="top-anchor" class="shell">
+      <header class="site-header panel">
+        <h1>Movement &amp; Momentum</h1>
+        <p>
+          A from-scratch page about showing up for yourself—one walk, lift, or stretch at a time. (No
+          Bootstrap on this page.)
+        </p>
+        <nav class="jump-nav" aria-label="On-page sections">
+          <a href="#routine">Weekly rhythm</a>
+          <a href="#video">Form check</a>
+          <a href="#explore">Explore the data</a>
+          <a href="#verify">Project links</a>
+        </nav>
+      </header>
+
+      <div class="panel">
+        <h2 id="routine">Weekly rhythm</h2>
+        <p>
+          I stay consistent when the week has a shape. Below, an <strong>ordered</strong> list uses nested
+          <strong>unordered</strong> lists for concrete actions (one valid nested-list pattern).
+        </p>
+        <ol class="week-plan">
+          <li>
+            <strong>Protect sleep</strong>
+            <ul>
+              <li>Same wake time most days (even after late shifts).</li>
+              <li>Phone across the room so “one more scroll” doesn’t win.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Move early</strong>
+            <ul>
+              <li>10-minute walk or mobility before the day gets loud.</li>
+              <li>Water bottle filled the night before—small win, real momentum.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Strength twice a week</strong>
+            <ul>
+              <li>Compound lifts or bodyweight basics I can track.</li>
+              <li>Stop before sloppy reps; quality beats ego.</li>
+            </ul>
+          </li>
+        </ol>
+        <p class="caption">
+          <a href="#top-anchor">Back to top</a> — jump link using an on-page anchor.
+        </p>
+        <h3 class="h3-alt">Alternate nested lists</h3>
+        <p>
+          Here is the other valid pattern: an <strong>unordered</strong> list with a nested
+          <strong>ordered</strong> list inside.
+        </p>
+        <ul class="alt-nested">
+          <li>
+            <strong>Low-energy day</strong>
+            <ol>
+              <li>Five-minute walk outside.</li>
+              <li>One glass of water before coffee.</li>
+              <li>One song of stretching or mobility.</li>
+            </ol>
+          </li>
+          <li>
+            <strong>High-stress day</strong>
+            <ol>
+              <li>Short breathing reset (slow exhale).</li>
+              <li>One small win: make the bed or clear the desk.</li>
+              <li>Move the body before scrolling the phone.</li>
+            </ol>
+          </li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>Why photos help</h2>
+        <p>
+          A single honest image can remind you that training happens in real places—not only on highlight
+          reels. This image is stored in the project (not from the Bootstrap theme pack).
+        </p>
+        <div class="photo-block">
+          <img
+            src="images/gym-unsplash.jpg"
+            width="900"
+            height="600"
+            alt="Gym floor with dumbbells and equipment, soft lighting"
+            loading="lazy"
+          />
+          <p class="caption">
+            Training spaces don’t need to be fancy—they need to be used. (Photo: Unsplash — local copy for
+            reliable hosting.)
+          </p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2 id="video">Form check: squat pattern</h2>
+        <p>
+          Short tutorials can clean up small mistakes that turn into big aches. Embedded YouTube (works
+          best once the site is hosted with <code>https://</code>).
+        </p>
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/ultWZbUMPL8"
+            title="YouTube video: squat form basics"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2 id="explore">Explore the data (live Tableau)</h2>
+        <p>
+          Below is a <strong>live, interactive</strong> Tableau Public dashboard (embedded, not a
+          screenshot). You can filter and explore inside the frame.
+        </p>
+        <div class="tableau-embed">
+          <iframe
+            class="tableau-frame"
+            title="Interactive Tableau visualization — Sample Superstore"
+            src="https://public.tableau.com/views/Superstore_24/Overview?:showVizHome=no&:embed=true&:toolbar=yes&:display_count=n&:origin=viz_share_link"
+          ></iframe>
+        </div>
+        <p class="tableau-note">
+          If the dashboard does not load, replace the iframe <code>src</code> with a current “Share →
+          Embed” URL from any Tableau Public workbook.
+        </p>
+      </div>
+
+      <div class="panel" id="verify">
+        <h2>Project verification links</h2>
+        <p>
+          Quick links to the rest of this site: home (<code>index.html</code>), the HTML résumé, and the
+          mini-game app.
+        </p>
+        <div class="back-links">
+          <p><strong>Professional site</strong></p>
+          <ul>
+            <li><a href="index.html">index.html</a> — professional home</li>
+            <li><a href="resume.html">resume.html</a> — HTML résumé (additional professional page)</li>
+          </ul>
+          <p><strong>Web app (single-page)</strong></p>
+          <ul>
+            <li><a href="app.html">app.html</a> — Dumbbell Guess Challenge (AI-assisted mini-game)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

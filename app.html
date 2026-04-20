@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dumbbell Guess Challenge</title>
+    <style>
+      :root {
+        --bg: #0f1f1c;
+        --panel: #1a2e2a;
+        --accent: #5ecf9a;
+        --muted: #9eb8b0;
+        --danger: #e07a7a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        background: radial-gradient(ellipse at top, #1a3d35 0%, var(--bg) 55%);
+        color: #e8f4ef;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 1rem 2rem;
+      }
+      h1 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin: 0 0 0.25rem;
+      }
+      .sub {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin: 0 0 1.25rem;
+        text-align: center;
+        max-width: 26rem;
+      }
+      .game {
+        background: var(--panel);
+        border-radius: 16px;
+        padding: 1.25rem 1.5rem 1.5rem;
+        width: 100%;
+        max-width: 22rem;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(94, 207, 154, 0.25);
+      }
+      .stat-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-bottom: 1rem;
+      }
+      .stat-row strong {
+        color: var(--accent);
+      }
+      label {
+        display: block;
+        font-size: 0.85rem;
+        margin-bottom: 0.35rem;
+        color: var(--muted);
+      }
+      input[type="number"] {
+        width: 100%;
+        padding: 0.6rem 0.75rem;
+        border-radius: 8px;
+        border: 1px solid #2a4a42;
+        background: #122620;
+        color: #fff;
+        font-size: 1.1rem;
+      }
+      input[type="number"]:focus {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      .btn-row {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+      }
+      button {
+        flex: 1;
+        padding: 0.55rem 0.75rem;
+        border-radius: 8px;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 0.95rem;
+      }
+      .btn-primary {
+        background: linear-gradient(180deg, #5ecf9a, #3da67a);
+        color: #0a1f18;
+      }
+      .btn-primary:hover {
+        filter: brightness(1.08);
+      }
+      .btn-secondary {
+        background: #243832;
+        color: var(--muted);
+      }
+      .btn-secondary:hover {
+        color: #fff;
+      }
+      .msg {
+        min-height: 3.2rem;
+        margin-top: 1rem;
+        padding: 0.65rem 0.75rem;
+        border-radius: 8px;
+        font-size: 0.92rem;
+        line-height: 1.4;
+        background: rgba(0, 0, 0, 0.2);
+      }
+      .msg.hint {
+        border-left: 3px solid var(--accent);
+      }
+      .msg.win {
+        border-left: 3px solid #ffd66b;
+        color: #fff5d6;
+      }
+      .footer {
+        margin-top: 1.5rem;
+        font-size: 0.85rem;
+      }
+      .footer a {
+        color: var(--accent);
+      }
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dumbbell Guess Challenge</h1>
+    <p class="sub">
+      The “gym” picked a secret weight from <strong>1</strong> to <strong>100</strong> (lbs). You get
+      <strong>seven</strong> tries. Warmer/colder hints keep it fair.
+    </p>
+
+    <div class="game" role="application" aria-labelledby="game-title">
+      <p id="game-title" class="visually-hidden">Number guessing game controls</p>
+      <div class="stat-row">
+        <span>Guesses left: <strong id="left">7</strong></span>
+        <span>Best streak: <strong id="streak">0</strong></span>
+      </div>
+      <label for="guess">Your guess</label>
+      <input id="guess" type="number" min="1" max="100" step="1" placeholder="e.g. 42" autocomplete="off" />
+      <div class="btn-row">
+        <button type="button" class="btn-primary" id="submit">Lock it in</button>
+        <button type="button" class="btn-secondary" id="newgame">New weight</button>
+      </div>
+      <div id="feedback" class="msg hint" aria-live="polite">Press “New weight” or start typing a number.</div>
+    </div>
+
+    <p class="footer">
+      <a href="scratch.html">Back to scratch page</a> ·
+      <a href="index.html">Professional home</a>
+    </p>
+
+    <script>
+      (function () {
+        var secret = 0;
+        var left = 7;
+        var streak = 0;
+        var best = 0;
+
+        var elLeft = document.getElementById("left");
+        var elStreak = document.getElementById("streak");
+        var elGuess = document.getElementById("guess");
+        var elFeedback = document.getElementById("feedback");
+
+        function rnd() {
+          return Math.floor(Math.random() * 100) + 1;
+        }
+
+        function setFeedback(text, cls) {
+          elFeedback.textContent = text;
+          elFeedback.className = "msg " + (cls || "hint");
+        }
+
+        function newGame() {
+          secret = rnd();
+          left = 7;
+          elLeft.textContent = String(left);
+          elGuess.value = "";
+          setFeedback("New round: guess between 1 and 100.", "hint");
+          elGuess.focus();
+        }
+
+        function submit() {
+          var n = parseInt(elGuess.value, 10);
+          if (isNaN(n) || n < 1 || n > 100) {
+            setFeedback("Enter a whole number from 1 to 100.", "hint");
+            return;
+          }
+          if (left <= 0) {
+            setFeedback('No guesses left—hit “New weight.”', "hint");
+            return;
+          }
+
+          left -= 1;
+          elLeft.textContent = String(left);
+
+          if (n === secret) {
+            streak += 1;
+            best = Math.max(best, streak);
+            elStreak.textContent = String(best);
+            setFeedback("Nailed it — " + secret + " lbs! Streak is " + streak + ". Try a heavier mystery?", "win");
+            secret = rnd();
+            left = 7;
+            elLeft.textContent = String(left);
+            return;
+          }
+
+          if (left === 0) {
+            streak = 0;
+            elStreak.textContent = String(best);
+            setFeedback("Out of tries. The weight was " + secret + " lbs. New weight is ready when you are.", "hint");
+            secret = rnd();
+            left = 7;
+            elLeft.textContent = String(left);
+            return;
+          }
+
+          var diff = Math.abs(n - secret);
+          var dir = n < secret ? "heavier" : "lighter";
+          var heat = diff > 25 ? "ice-cold" : diff > 12 ? "cool" : diff > 5 ? "warming up" : "very hot";
+          setFeedback(heat + " — go " + dir + ". (" + left + " guess" + (left === 1 ? "" : "es") + " left)", "hint");
+        }
+
+        document.getElementById("submit").addEventListener("click", submit);
+        document.getElementById("newgame").addEventListener("click", newGame);
+        elGuess.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") submit();
+        });
+
+        newGame();
+      })();
+    </script>
+  </body>
+</html>

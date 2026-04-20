@@ -1,0 +1,72 @@
+/* Professional Bootstrap site — custom theme tweaks */
+
+:root {
+  --brand-primary: #1e4d6b;
+  --brand-primary-dark: #153a52;
+  --brand-accent: #c9a227;
+  --body-muted: #5c6c74;
+}
+
+body {
+  font-family: "Source Sans 3", system-ui, -apple-system, sans-serif;
+  color: #1a252e;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Source Sans 3", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.btn-primary {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--brand-primary-dark);
+  border-color: var(--brand-primary-dark);
+}
+
+.text-muted-custom {
+  color: var(--body-muted) !important;
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #f0f4f8 0%, #e8eef3 50%, #dfe8ef 100%);
+}
+
+.card {
+  border: 1px solid rgba(30, 77, 107, 0.12);
+  box-shadow: 0 0.125rem 0.5rem rgba(30, 77, 107, 0.06);
+}
+
+.card-title {
+  color: var(--brand-primary);
+}
+
+.section-heading {
+  border-left: 4px solid var(--brand-accent);
+  padding-left: 0.75rem;
+}
+
+footer a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #fff;
+  text-decoration: underline;
+}

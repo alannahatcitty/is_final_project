@@ -1,0 +1,8 @@
+{
+  "name": "is-final-project",
+  "private": true,
+  "description": "Intro to IS final web project",
+  "scripts": {
+    "push": "node scripts/github-api-push.mjs"
+  }
+}
